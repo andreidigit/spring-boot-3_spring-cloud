@@ -1,0 +1,70 @@
+### Normal flow
+GET http://{{HOST}}:{{PORT}}/product-composite/{{PROD_ID_REVIEWS_RECOMMENDATIONS}}
+Accept: application/json
+
+> {%
+client.log("" + response.body);
+client.test("Normal flow", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.recommendations.length === 3, "Wrong recommendations amount");
+  client.assert(response.body.reviews.length === 3, "Wrong reviews amount");
+});
+%}
+
+### Non-existing productId ($PROD_ID_NOT_FOUND) is Not found 404
+GET http://{{HOST}}:{{PORT}}/product-composite/{{PROD_ID_NOT_FOUND}}
+Accept: application/json
+
+> {%
+client.test("Non-existing productId", function() {
+  client.assert(response.status === 404, "Response status is not 404");
+  client.assert(response.body.message.startsWith("No product found for productId:", "Wrong answer"));
+});
+%}
+
+### Verify productId ($PROD_ID_NO_RECOMMENDATIONS) with no recommendations
+GET http://{{HOST}}:{{PORT}}/product-composite/{{PROD_ID_NO_RECOMMENDATIONS}}
+Accept: application/json
+
+> {%
+client.test("productId with no recommendations", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.recommendations.length === 0, "Wrong recommendations amount");
+  client.assert(response.body.reviews.length === 3, "Wrong reviews amount");
+});
+%}
+
+### Verify productId ($PROD_ID_NO_REVIEWS) with no reviews
+GET http://{{HOST}}:{{PORT}}/product-composite/{{PROD_ID_NO_REVIEWS}}
+Accept: application/json
+
+> {%
+client.test("productId with no reviews", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.recommendations.length === 3, "Wrong recommendations amount");
+  client.assert(response.body.reviews.length === 0, "Wrong reviews amount");
+});
+%}
+
+### Verify productId which is out of range (-1) - 422 (Unprocessable Entity)
+GET http://{{HOST}}:{{PORT}}/product-composite/-1
+Accept: application/json
+
+> {%
+client.test("productId with invalid id (-1)", function() {
+  client.assert(response.status === 422, "Response status is not 422");
+  client.assert(response.body.message.startsWith("Invalid productId:", "Wrong answer"));
+});
+%}
+
+### Verify productId which is not a number - 400 (Bad Request) means invalid format
+GET http://{{HOST}}:{{PORT}}/product-composite/string
+Accept: application/json
+
+> {%
+client.test("productId is not a number", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+  client.assert(response.body.message.startsWith("Type mismatch", "Wrong answer"));
+});
+%}
+
