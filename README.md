@@ -19,3 +19,7 @@ Java 17.
 ####
 - Dockerfile
 - docker-compose
+
+### 03. OpenAPI
+- SpringDoc OpenAPI [link](https://springdoc.org/#general-overview)
+- Swagger UI 
