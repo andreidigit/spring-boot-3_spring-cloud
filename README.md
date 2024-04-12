@@ -23,3 +23,7 @@ Java 17.
 ### 03. OpenAPI
 - SpringDoc OpenAPI [link](https://springdoc.org/#general-overview)
 - Swagger UI 
+
+### 04. Persistence-1
+- SpringData, MongoDb, MySQL.
+- Testcontainers. [link](https://java.testcontainers.org/test_framework_integration/manual_lifecycle_control/)
