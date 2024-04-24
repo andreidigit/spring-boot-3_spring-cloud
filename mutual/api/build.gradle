@@ -20,12 +20,18 @@ tasks.named("bootJar") {
 }
 
 def springBootVersion = "3.2.3"
+def lombokVersion = "1.18.32"
 
 dependencies {
     implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
 
     implementation 'org.springdoc:springdoc-openapi-starter-common:2.4.0'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"         // Не включаем Lombok в сборку.
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'

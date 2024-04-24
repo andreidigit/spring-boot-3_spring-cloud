@@ -1,7 +1,7 @@
 package com.example.microservices.core.review;
 
-import com.example.microservices.core.review.service.persistence.ReviewEntity;
-import com.example.microservices.core.review.service.persistence.ReviewRepository;
+import com.example.microservices.core.review.persistence.ReviewEntity;
+import com.example.microservices.core.review.persistence.ReviewRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

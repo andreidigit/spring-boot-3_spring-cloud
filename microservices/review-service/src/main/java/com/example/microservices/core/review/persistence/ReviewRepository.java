@@ -1,4 +1,4 @@
-package com.example.microservices.core.review.service.persistence;
+package com.example.microservices.core.review.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;

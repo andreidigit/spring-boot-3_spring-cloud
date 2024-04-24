@@ -1,38 +1,15 @@
 package com.example.mutual.api.composite.product;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ServiceAddresses {
-    private final String compose;
-    private final String product;
-    private final String review;
-    private final String recommend;
-
-    public ServiceAddresses() {
-        compose = null;
-        product = null;
-        review = null;
-        recommend = null;
-    }
-
-    public ServiceAddresses(String compose, String product, String review, String recommend) {
-        this.compose = compose;
-        this.product = product;
-        this.review = review;
-        this.recommend = recommend;
-    }
-
-    public String getCompose() {
-        return compose;
-    }
-
-    public String getProduct() {
-        return product;
-    }
-
-    public String getReview() {
-        return review;
-    }
-
-    public String getRecommend() {
-        return recommend;
-    }
+    private String compose;
+    private String product;
+    private String review;
+    private String recommend;
 }

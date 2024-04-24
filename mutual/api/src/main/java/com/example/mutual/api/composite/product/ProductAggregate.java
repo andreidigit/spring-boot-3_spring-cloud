@@ -1,50 +1,19 @@
 package com.example.mutual.api.composite.product;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class ProductAggregate {
-    private final int productId;
-    private final String name;
-    private final int weight;
-    private final List<RecommendationSummary> recommendations;
-    private final List<ReviewSummary> reviews;
-    private final ServiceAddresses serviceAddresses;
-
-    public ProductAggregate(
-            int productId, String name,
-            int weight,
-            List<RecommendationSummary> recommendations,
-            List<ReviewSummary> reviews,
-            ServiceAddresses serviceAddresses) {
-        this.productId = productId;
-        this.name = name;
-        this.weight = weight;
-        this.recommendations = recommendations;
-        this.reviews = reviews;
-        this.serviceAddresses = serviceAddresses;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public List<RecommendationSummary> getRecommendations() {
-        return recommendations;
-    }
-
-    public List<ReviewSummary> getReviews() {
-        return reviews;
-    }
-
-    public ServiceAddresses getServiceAddresses() {
-        return serviceAddresses;
-    }
+    private int productId = 0;
+    private String name = null;
+    private int weight = 0;
+    private List<RecommendationSummary> recommendations = null;
+    private List<ReviewSummary> reviews = null;
+    private ServiceAddresses serviceAddresses = null;
 }

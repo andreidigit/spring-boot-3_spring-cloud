@@ -1,4 +1,4 @@
-package com.example.microservices.core.recommendation.service.persistence;
+package com.example.microservices.core.recommendation.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 

@@ -27,3 +27,7 @@ Java 17.
 ### 04. Persistence-1
 - SpringData, MongoDb, MySQL.
 - Testcontainers. [link](https://java.testcontainers.org/test_framework_integration/manual_lifecycle_control/)
+
+### 05. Persistence-2
+- MapStruct [link](https://mapstruct.org/documentation/installation/), Lombok.
+- Updated - tests, swagger.

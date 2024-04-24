@@ -1,4 +1,4 @@
-package com.example.microservices.core.review.service.persistence;
+package com.example.microservices.core.review.persistence;
 
 import jakarta.persistence.*;
 

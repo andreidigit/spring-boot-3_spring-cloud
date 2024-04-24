@@ -1,7 +1,7 @@
 package com.example.microservices.core.recommendation;
 
-import com.example.microservices.core.recommendation.service.persistence.RecommendationEntity;
-import com.example.microservices.core.recommendation.service.persistence.RecommendationRepository;
+import com.example.microservices.core.recommendation.persistence.RecommendationEntity;
+import com.example.microservices.core.recommendation.persistence.RecommendationRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

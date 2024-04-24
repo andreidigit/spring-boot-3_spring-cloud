@@ -1,7 +1,7 @@
 package com.example.microservices.core.product;
 
-import com.example.microservices.core.product.service.persistence.ProductEntity;
-import com.example.microservices.core.product.service.persistence.ProductRepository;
+import com.example.microservices.core.product.persistence.ProductEntity;
+import com.example.microservices.core.product.persistence.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

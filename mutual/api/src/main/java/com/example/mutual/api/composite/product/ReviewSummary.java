@@ -1,25 +1,17 @@
 package com.example.mutual.api.composite.product;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReviewSummary {
-    private final int reviewId;
-    private final String author;
-    private final String subject;
-
-    public ReviewSummary(int reviewId, String author, String subject) {
-        this.reviewId = reviewId;
-        this.author = author;
-        this.subject = subject;
-    }
-
-    public int getReviewId() {
-        return reviewId;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
+    private int reviewId;
+    private String author;
+    private String subject;
+    private String content;
 }

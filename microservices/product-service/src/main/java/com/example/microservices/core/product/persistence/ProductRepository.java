@@ -1,4 +1,4 @@
-package com.example.microservices.core.product.service.persistence;
+package com.example.microservices.core.product.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
