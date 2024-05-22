@@ -1,0 +1,58 @@
+### vars
+@HOST =localhost
+@PORT =8080
+@ID1 =1
+@ID2 =2
+
+
+### Delete Product ID = 1
+DELETE http://{{HOST}}:{{PORT}}/product-composite/{{ID1}}
+### Delete Product ID = 2
+DELETE http://{{HOST}}:{{PORT}}/product-composite/{{ID2}}
+
+
+### SetUp Product ID = 1
+POST http://{{HOST}}:{{PORT}}/product-composite
+Content-Type: application/json
+
+{"productId":{{ID1}}, "name":"product name A", "weight":100,
+  "recommendations":[
+    {"recommendationId":1,"author":"author 1","rate":1,"content":"content 1"},
+    {"recommendationId":2,"author":"author 2","rate":2,"content":"content 2"},
+    {"recommendationId":3,"author":"author 3","rate":3,"content":"content 3"}
+  ],
+  "reviews":[
+  {"reviewId":1,"author":"author 1","subject":"subject 1","content":"content 1"},
+  {"reviewId":2,"author":"author 2","subject":"subject 2","content":"content 2"},
+  {"reviewId":3,"author":"author 3","subject":"subject 3","content":"content 3"}
+  ]}
+
+### SetUp Product ID = 2
+POST http://{{HOST}}:{{PORT}}/product-composite
+Content-Type: application/json
+
+{"productId":{{ID2}}, "name":"product name A", "weight":200,
+  "recommendations":[
+    {"recommendationId":21,"author":"author 1","rate":21,"content":"content 1"},
+    {"recommendationId":22,"author":"author 2","rate":22,"content":"content 2"},
+    {"recommendationId":23,"author":"author 3","rate":23,"content":"content 3"}
+  ],
+  "reviews":[
+    {"reviewId":21,"author":"author 1","subject":"subject 1","content":"content 1"},
+    {"reviewId":22,"author":"author 2","subject":"subject 2","content":"content 2"},
+    {"reviewId":23,"author":"author 3","subject":"subject 3","content":"content 3"}
+  ]}
+
+
+### Get Product ID = 1
+GET http://{{HOST}}:{{PORT}}/product-composite/{{ID1}}
+Accept: application/json
+
+> {%
+client.log("" + response.body);
+client.test("Normal flow", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.recommendations.length === 3, "Wrong recommendations amount");
+  client.assert(response.body.reviews.length === 3, "Wrong reviews amount");
+});
+%}

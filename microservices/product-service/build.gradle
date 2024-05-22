@@ -22,6 +22,7 @@ jar {
 def testcontainersVersion = "1.19.7"
 def lombokVersion = "1.18.32"
 def mapstructVersion = "1.5.5.Final"
+def springCloudVersion = "2023.0.1"
 
 dependencies {
     implementation project(":mutual:api")
@@ -30,6 +31,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
+    implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
 
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}", "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     //annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0" может понадобится зависит от версий
@@ -45,6 +50,11 @@ dependencies {
     testImplementation 'org.testcontainers:testcontainers'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:mongodb'
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 tasks.named('test') {

@@ -31,3 +31,9 @@ Java 17.
 ### 05. Persistence-2
 - MapStruct [link](https://mapstruct.org/documentation/installation/), Lombok.
 - Updated - tests, swagger.
+
+### 06. Reactive
+- Non-blocking synchronise [subscribeOn() - link](https://projectreactor.io/docs/core/release/reference/#_the_subscribeon_method)
+- SpringCloud 2023 [link](https://spring.io/projects/spring-cloud)
+- rabbitMQ [dockerHub](https://hub.docker.com/_/rabbitmq/tags)
+- kafka [dockerHub](https://hub.docker.com/r/confluentinc/cp-kafka/tags) 
