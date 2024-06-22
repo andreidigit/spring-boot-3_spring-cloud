@@ -36,7 +36,7 @@ import static reactor.core.publisher.Mono.just;
 
 @SpringBootTest(
         webEnvironment = RANDOM_PORT,
-        properties = {"spring.main.allow-bean-definition-overriding=true"})
+        properties = {"spring.main.allow-bean-definition-overriding=true", "eureka.client.enabled=false"})
 @Import({TestChannelBinderConfiguration.class})
 public class MessagingTests {
     private static final Logger LOG = LoggerFactory.getLogger(MessagingTests.class);

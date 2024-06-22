@@ -36,6 +36,8 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
 
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}", "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     //annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0" может понадобится зависит от версий
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"

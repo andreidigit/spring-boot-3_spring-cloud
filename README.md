@@ -37,3 +37,9 @@ Java 17.
 - SpringCloud 2023 [link](https://spring.io/projects/spring-cloud)
 - rabbitMQ [dockerHub](https://hub.docker.com/_/rabbitmq/tags)
 - kafka [dockerHub](https://hub.docker.com/r/confluentinc/cp-kafka/tags) 
+
+### 07. Service Discovery / Edge Server
+- How to Run a Eureka Server [docs-link](https://docs.spring.io/spring-cloud-netflix/docs/current/reference/html/#spring-cloud-running-eureka-server)
+- round-robin loadbalancer [docs-link](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#webclinet-loadbalancer-client)
+- mongoDB index operations
+- behind a reverse proxy [docs-link](https://springdoc.org/faq.html#_how_can_i_deploy_springdoc_openapi_starter_webmvc_ui_behind_a_reverse_proxy)
