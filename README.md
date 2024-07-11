@@ -43,3 +43,11 @@ Java 17.
 - round-robin loadbalancer [docs-link](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#webclinet-loadbalancer-client)
 - mongoDB index operations
 - behind a reverse proxy [docs-link](https://springdoc.org/faq.html#_how_can_i_deploy_springdoc_openapi_starter_webmvc_ui_behind_a_reverse_proxy)
+
+### 08. OAuth2 / OpenID-Connect
+- OAuth 2.0 [docs-link](https://oauth.net/2/) RFC 6749
+- OpenID Specifications [docs-link](https://openid.net/developers/specs/)
+- Top 10 Web Application Security Risks [OWASP-link](https://owasp.org/www-project-top-ten/)
+- spring-authorization-server [github-link](https://github.com/spring-projects/spring-authorization-server/commit/2ecb7767d949af44a11c80b432353561466c4118)
+- Customizing Authorization Request Validation [spring-docs-link](https://docs.spring.io/spring-authorization-server/docs/1.0.0/reference/html/protocol-endpoints.html#oauth2-authorization-endpoint-customizing-authorization-request-validation)
+- Certified OpenID Provider Servers and Services [web-link](https://openid.net/developers/certified-openid-connect-implementations/)
