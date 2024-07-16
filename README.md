@@ -51,3 +51,8 @@ Java 17.
 - spring-authorization-server [github-link](https://github.com/spring-projects/spring-authorization-server/commit/2ecb7767d949af44a11c80b432353561466c4118)
 - Customizing Authorization Request Validation [spring-docs-link](https://docs.spring.io/spring-authorization-server/docs/1.0.0/reference/html/protocol-endpoints.html#oauth2-authorization-endpoint-customizing-authorization-request-validation)
 - Certified OpenID Provider Servers and Services [web-link](https://openid.net/developers/certified-openid-connect-implementations/)
+
+### 09. Config Server
+- Discovery first [docs-link](https://docs.spring.io/spring-cloud-config/docs/4.1.x/reference/html/#discovery-first-bootstrap)
+- Key Management [docs-link](https://docs.spring.io/spring-cloud-config/docs/4.1.x/reference/html/#_key_management)
+- Spring CLI [docs-link](https://docs.spring.io/spring-boot/installing.html#getting-started.installing.cli)

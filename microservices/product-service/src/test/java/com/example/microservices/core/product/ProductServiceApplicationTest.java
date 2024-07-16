@@ -22,7 +22,9 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
-@SpringBootTest(webEnvironment = RANDOM_PORT)
+@SpringBootTest(webEnvironment = RANDOM_PORT, properties = {
+        "eureka.client.enabled=false",
+        "spring.cloud.config.enabled=false"})
 class ProductServiceApplicationTest extends MongoDbTestBase {
     @Autowired
     private WebTestClient client;
