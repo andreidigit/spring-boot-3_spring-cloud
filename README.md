@@ -56,3 +56,7 @@ Java 17.
 - Discovery first [docs-link](https://docs.spring.io/spring-cloud-config/docs/4.1.x/reference/html/#discovery-first-bootstrap)
 - Key Management [docs-link](https://docs.spring.io/spring-cloud-config/docs/4.1.x/reference/html/#_key_management)
 - Spring CLI [docs-link](https://docs.spring.io/spring-boot/installing.html#getting-started.installing.cli)
+
+### 10. Circuit Breaker
+- Resilience4j [docs-link](https://resilience4j.readme.io/docs/circuitbreaker)
+- Setup and usage in Spring Boot 3 [demo-link](https://github.com/resilience4j/resilience4j-spring-boot3-demo)

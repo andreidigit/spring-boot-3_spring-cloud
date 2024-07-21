@@ -27,7 +27,11 @@ public interface ProductCompositeService {
             @ApiResponse(responseCode = "422", description = "${api.responseCodes.unprocessableEntity.description}")
     })
     @GetMapping(value = "/product-composite/{productId}", produces = "application/json")
-    Mono<ProductAggregate> getProduct(@PathVariable int productId);
+    Mono<ProductAggregate> getProduct(
+            @PathVariable int productId,
+            @RequestParam(value = "delay", required = false, defaultValue = "0") int delay,
+            @RequestParam(value = "faultPercent", required = false, defaultValue = "0") int faultPercent
+    );
 
     /**
      *   curl -X POST $HOST:$PORT/product-composite \

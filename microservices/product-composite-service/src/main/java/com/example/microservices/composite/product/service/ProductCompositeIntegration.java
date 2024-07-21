@@ -10,9 +10,15 @@ import com.example.mutual.api.recommendation.RecommendationService;
 import com.example.mutual.api.review.Review;
 import com.example.mutual.api.review.ReviewService;
 import com.example.mutual.util.http.HttpErrorInfo;
+import com.example.mutual.util.http.ServiceUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.http.HttpStatus;
 import org.springframework.messaging.Message;
@@ -20,11 +26,13 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.Objects;
 
 import static com.example.mutual.api.event.Event.Type.CREATE;
@@ -36,6 +44,8 @@ import static reactor.core.publisher.Flux.empty;
 public class ProductCompositeIntegration implements ProductService, RecommendationService, ReviewService {
     public static final Logger LOG = LoggerFactory.getLogger(ProductCompositeIntegration.class);
 
+    private final ServiceUtil serviceUtil;
+
     private static final String PRODUCT_SERVICE_URL = "http://product";
     private static final String RECOMMENDATION_SERVICE_URL = "http://recommendation";
     private static final String REVIEW_SERVICE_URL = "http://review";
@@ -44,10 +54,13 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
     private final Scheduler publishEventScheduler;
     private final StreamBridge streamBridge;
 
+    @Autowired
     public ProductCompositeIntegration(
+            ServiceUtil serviceUtil,
             ObjectMapper mapper,
             WebClient.Builder builder,
             Scheduler publishEventScheduler, StreamBridge streamBridge) {
+        this.serviceUtil = serviceUtil;
         this.mapper = mapper;
         this.webClient = builder.build();
         this.publishEventScheduler = publishEventScheduler;
@@ -55,8 +68,13 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
     }
 
     @Override
-    public Mono<Product> getProduct(int productId) {
-        String url = PRODUCT_SERVICE_URL + "/product/" + productId;
+    @Retry(name = "product")
+    @TimeLimiter(name = "product")
+    @CircuitBreaker(name = "product", fallbackMethod = "getProductFallbackValue")
+    public Mono<Product> getProduct(int productId, int delay, int faultPercent) {
+        URI url = UriComponentsBuilder
+                .fromUriString(PRODUCT_SERVICE_URL + "/product/{productId}?delay={delay}&faultPercent={faultPercent}")
+                .build(productId, delay, faultPercent);
         LOG.debug("Will call the getProduct API on URL: {}", url);
 
         return webClient
@@ -66,6 +84,24 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
                 .bodyToMono(Product.class)
                 .log(LOG.getName(), FINE)
                 .onErrorMap(WebClientResponseException.class, this::handleException);
+    }
+
+    private Mono<Product> getProductFallbackValue(int productId, int delay, int faultPercent, CallNotPermittedException ex) {
+
+        LOG.warn(
+                "Creating a fail-fast fallback product for productId = {}, delay = {}, faultPercent = {} and exception = {} ",
+                productId, delay, faultPercent, ex.toString()
+        );
+
+        if (productId == 13) {
+            String errMsg = "Product Id: " + productId + " not found in fallback cache!";
+            LOG.warn(errMsg);
+            throw new NotFoundException(errMsg);
+        }
+
+        return Mono.just(
+                new Product(productId, "Fallback product" + productId, productId, serviceUtil.getServiceAddress())
+        );
     }
 
     @Override

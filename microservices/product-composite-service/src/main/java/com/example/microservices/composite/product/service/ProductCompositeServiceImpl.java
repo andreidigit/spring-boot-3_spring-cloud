@@ -39,7 +39,7 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Mono<ProductAggregate> getProduct(int productId) {
+    public Mono<ProductAggregate> getProduct(int productId, int delay, int faultPercent) {
         LOG.info("Will get composite product info for product.id={}", productId);
         return Mono.zip(
                         values -> createProductAggregate(
@@ -48,7 +48,7 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
                                 (List<Review>) values[2],
                                 serviceUtil.getServiceAddress()
                         ),
-                        integration.getProduct(productId),
+                        integration.getProduct(productId, delay, faultPercent),
                         integration.getRecommendations(productId).collectList(),
                         integration.getReviews(productId).collectList())
                 .doOnError(ex -> LOG.warn("getCompositeProduct failed: {}", ex.toString()))
@@ -131,17 +131,17 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
                         .map(r -> new ReviewSummary(r.getReviewId(), r.getAuthor(), r.getSubject(), r.getContent()))
                         .collect(Collectors.toList());
         String productAddress = product.getServiceAddress();
-        String recommendationAddress = (recommendations != null && recommendations.size() > 0)
+        String recommendationAddress = (recommendations != null && !recommendations.isEmpty())
                 ? recommendations.get(0).getServiceAddress()
                 : "";
-        String reviewAddress = (reviews != null && reviews.size() > 0) ? reviews.get(0).getServiceAddress() : "";
+        String reviewAddress = (reviews != null && !reviews.isEmpty()) ? reviews.get(0).getServiceAddress() : "";
         ServiceAddresses serviceAddresses =
                 new ServiceAddresses(serviceAddress, productAddress, reviewAddress, recommendationAddress);
         return new ProductAggregate(productId, name, weight, recommendationSummaries, reviewSummaries, serviceAddresses);
     }
 
     private Mono<SecurityContext> getLogAuthorizationInfoMono() {
-        return getSecurityContextMono().doOnNext(sc -> logAuthorizationInfo(sc));
+        return getSecurityContextMono().doOnNext(this::logAuthorizationInfo);
     }
 
     private Mono<SecurityContext> getSecurityContextMono() {
