@@ -60,3 +60,11 @@ Java 17.
 ### 10. Circuit Breaker
 - Resilience4j [docs-link](https://resilience4j.readme.io/docs/circuitbreaker)
 - Setup and usage in Spring Boot 3 [demo-link](https://github.com/resilience4j/resilience4j-spring-boot3-demo)
+
+### 11. Tracing Zipkin
+- OpenTelemetry [web-link](https://opentelemetry.io/)
+- OpenZipkin Brave [git-link](https://github.com/openzipkin/brave)
+- W3C trace context [W3C-link](https://www.w3.org/TR/trace-context/)
+- Micrometer Observability [docs-link](https://docs.micrometer.io/micrometer/reference/observation/introduction.html)
+- Zipkin server extension [docs-link](https://zipkin.io/pages/extensions_choices.html)
+- Reactive and ThreadLocals Context Propagation [spring blog](https://spring.io/blog/2023/03/30/context-propagation-with-project-reactor-3-unified-bridging-between-reactive)

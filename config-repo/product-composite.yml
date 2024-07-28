@@ -147,8 +147,11 @@ resilience4j.retry:
 logging:
   level:
     root: INFO
-    com.example: DEBUG
-    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
+    com.example: INFO
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: INFO
+
+#spring.codec.log-request-details: true
+#logging.level.org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE
 
 ---
 spring.config.activate.on-profile: docker

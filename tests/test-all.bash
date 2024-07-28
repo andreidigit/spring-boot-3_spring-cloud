@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 : ${HOST=localhost}
 : ${PORT=8443}
 : ${PROD_ID_REVIEWS_RECOMMENDATIONS=1}
