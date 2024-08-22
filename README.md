@@ -68,3 +68,10 @@ Java 17.
 - Micrometer Observability [docs-link](https://docs.micrometer.io/micrometer/reference/observation/introduction.html)
 - Zipkin server extension [docs-link](https://zipkin.io/pages/extensions_choices.html)
 - Reactive and ThreadLocals Context Propagation [spring blog](https://spring.io/blog/2023/03/30/context-propagation-with-project-reactor-3-unified-bridging-between-reactive)
+
+### 12. Kubernetes basic
+- Minikube [install-link](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download)
+- kubectl command-line tool [docs-link](https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/)
+- Node [docs-link](https://kubernetes.io/docs/concepts/architecture/nodes/)
+- Pods [docs-link](https://kubernetes.io/docs/concepts/workloads/pods/)
+- ReplicaSet, Deployment, ConfigMap, Secret, Service, Ingress etc.
