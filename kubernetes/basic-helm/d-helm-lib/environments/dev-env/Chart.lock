@@ -1,0 +1,9 @@
+dependencies:
+- name: common
+  repository: file://../../common
+  version: 0.1.0
+- name: product
+  repository: file://../../product
+  version: 0.1.0
+digest: sha256:a54170d1dc6e3f69a79ba0c3bb9c2e9c515988bf0aed5c3d54f595d835eb0fe6
+generated: "2024-08-22T21:54:38.625902995Z"

@@ -1,0 +1,19 @@
+{{- define "common.service" -}}
+{{- $common := dict "Values" .Values.common -}}
+{{- $noCommon := omit .Values "common" -}}
+{{- $overrides := dict "Values" $noCommon -}}
+{{- $noValues := omit . "Values" -}}
+{{- with merge $noValues $overrides $common -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  #  type: ClusterIP
+  type: {{ .Values.service.type }}
+  ports:
+{{ toYaml .Values.service.ports | indent 4 }}
+  selector:
+    app: {{ include "common.name" . }}
+{{- end -}}
+{{- end -}}

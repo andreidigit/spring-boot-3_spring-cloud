@@ -75,3 +75,7 @@ Java 17.
 - Node [docs-link](https://kubernetes.io/docs/concepts/architecture/nodes/)
 - Pods [docs-link](https://kubernetes.io/docs/concepts/workloads/pods/)
 - ReplicaSet, Deployment, ConfigMap, Secret, Service, Ingress etc.
+
+### 13. Kubernetes, Helm basic
+- Helm [install-link](https://helm.sh/docs/intro/install/)
+- ArtifactHUB [helm-charts-link](https://artifacthub.io/packages/search?kind=0&verified_publisher=true&sort=relevance&page=1)

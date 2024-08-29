@@ -1,0 +1,6 @@
+apiVersion: v2
+name: common
+type: library
+description: A Helm library chart with shared definitions
+version: 0.1.0
+appVersion: "0.3.0"

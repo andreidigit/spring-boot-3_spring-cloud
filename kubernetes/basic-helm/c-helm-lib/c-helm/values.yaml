@@ -1,0 +1,48 @@
+replicaCount: 2
+
+imagePullSecrets: []
+nameOverride: backend
+fullnameOverride: ""
+
+configmap:
+  name: config-map
+
+deployment:
+  name: deploy-ment
+
+livenessProbe_enabled: true
+livenessProbe:
+  failureThreshold: 3
+  httpGet:
+    path: /
+    port: 80
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  initialDelaySeconds: 10
+
+readinessProbe_enabled: true
+readinessProbe:
+  failureThreshold: 3
+  httpGet:
+    path: /
+    port: 80
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 100Mi
+  limits:
+    cpu: 100m
+    memory: 100Mi
+
+service:
+  name: serv-ice
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080

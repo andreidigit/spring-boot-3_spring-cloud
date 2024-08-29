@@ -1,0 +1,12 @@
+secrets:
+
+  config-server-secrets:
+    NAME_ADMIN: Pavel-Dev
+  config-client-credentials:
+
+
+product:
+  env:
+    NAME: Oleg-Dev
+  envFromSecretRefs:
+    - config-server-secrets
