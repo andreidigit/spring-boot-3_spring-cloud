@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rabbitmq-connection-check
+  namespace: show
+spec:
+  template:
+    spec:
+      containers:
+        - name: rabbitmq-check
+          image: appropriate/curl  # образ с curl для проверки подключения
+          command: ["sh", "-c", "while ! curl -s 172.20.0.1:5672; do echo 'Waiting for RabbitMQ...'; sleep 2; done; echo 'RabbitMQ is up!'"]
+          env:
+            - name: RABBITMQ_HOST
+              value: 172.20.0.1 # rabbitmq-host
+      restartPolicy: OnFailure

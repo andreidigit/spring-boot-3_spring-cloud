@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.loadbalancer.reactive.ReactorLoadBalancerExchangeFilterFunction;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
@@ -83,12 +82,9 @@ public class ProductCompositeServiceApplication {
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    @Autowired
-    private ReactorLoadBalancerExchangeFilterFunction lbFunction;
-
     @Bean
     WebClient webClient(WebClient.Builder builder){
-        return builder.filter(lbFunction).build();
+        return builder.build();
     }
 
     private final Integer threadPoolSize;

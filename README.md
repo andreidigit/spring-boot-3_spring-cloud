@@ -79,3 +79,7 @@ Java 17.
 ### 13. Kubernetes, Helm basic
 - Helm [install-link](https://helm.sh/docs/intro/install/)
 - ArtifactHUB [helm-charts-link](https://artifacthub.io/packages/search?kind=0&verified_publisher=true&sort=relevance&page=1)
+
+### 14. Deployment to Kubernetes
+- Replacing Netflix Eureka discovery.
+- Development, staging, production.

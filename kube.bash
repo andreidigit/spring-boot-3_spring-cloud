@@ -3,16 +3,19 @@
 #### copy properties BASH
 : ${IS_CREATE_FOLDER=false}
 : ${IS_COPY_BASIC=false}
-: ${IS_COPY_BASIC_HELM_SET=true}
+: ${IS_COPY_BASIC_HELM_SET=false}
 : ${IS_COPY_BASIC_HELM_GET=false}
+: ${IS_COPY_HELM_SET=true}
+: ${IS_COPY_HELM_GET=false}
 
 #### Local Variables
 : ${LOCAL_ROOT_KUBE='kubernetes'}
 : ${DIR_BASIC='/basic'}
 : ${DIR_BASIC_HELM='/basic-helm'}
+: ${DIR_HELM='/helm'}
 
 #### Server Variables
-: ${ROOT_DIR='/home/ai/kubernetes'}
+: ${ROOT_DIR='/home/ai/showcase/kubernetes'}
 
 #### Credentials
 : ${CRED_SSH_CERTIFICATE='and-nop'}
@@ -45,6 +48,25 @@ EOF
 }
 
 createFolder
+
+#### SET HELM
+if [[ $IS_COPY_HELM_SET == "true" ]]
+then
+pscp -r -v -i ~/"$CRED_PPK_CERTIFICATE" \
+    ./$LOCAL_ROOT_KUBE$DIR_HELM \
+    "$CRED_LOGIN_ADDRESS":"$ROOT_DIR"
+echo "---- 3.1. folder helm has set"
+fi
+
+#### GET HELM
+if [[ $IS_COPY_HELM_GET == "true" ]]
+then
+echo "---- 3.2. start to get helm"
+pscp -r -v -i ~/"$CRED_PPK_CERTIFICATE" \
+    "$CRED_LOGIN_ADDRESS":"$ROOT_DIR$DIR_HELM" \
+    ./$LOCAL_ROOT_KUBE
+echo "---- 3.2. has got helm"
+fi
 
 #### SET BASIC HELM
 if [[ $IS_COPY_BASIC_HELM_SET == "true" ]]

@@ -1,6 +1,13 @@
-server.port: 9999
+server.port: 80
 server.forward-headers-strategy: framework
 
 logging:
   level:
     root: INFO
+
+management.endpoint.health.group.readiness.include: readinessState
+
+---
+spring.config.activate.on-profile: prod
+
+logging.level.root: WARN

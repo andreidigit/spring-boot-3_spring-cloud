@@ -4,13 +4,13 @@ ADD ./build/libs/*.jar app.jar
 RUN java -Djarmode=layertools -jar app.jar extract
 
 FROM eclipse-temurin:17.0.10_7-jre-alpine
-#RUN apk --no-cache add curl
+RUN apk --no-cache add curl
 WORKDIR application
 COPY --from=builder extracted/dependencies/ ./
 COPY --from=builder extracted/spring-boot-loader/ ./
 COPY --from=builder extracted/snapshot-dependencies/ ./
 COPY --from=builder extracted/application/ ./
 
-EXPOSE 8080
+EXPOSE 80
 
 ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
