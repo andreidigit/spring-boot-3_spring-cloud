@@ -83,3 +83,7 @@ Java 17.
 ### 14. Deployment to Kubernetes
 - Replacing Netflix Eureka discovery.
 - Development, staging, production.
+
+### 15.Replacing Config Server, Gateway
+- ConfigMaps + Secrets.
+- Ingress, cert-manager [docs-link](https://cert-manager.io/docs/)

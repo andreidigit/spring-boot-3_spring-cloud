@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
 #: ${HOST=localhost}
-: ${HOST=192.168.0.13}
-#: ${PORT=8443}
-: ${PORT=30443}
+#: ${HOST=192.168.0.13}
+: ${HOST=show.me}
+: ${PORT=8443}
+#: ${PORT=30443}
 : ${PROD_ID_REVIEWS_RECOMMENDATIONS=1}
 : ${PROD_ID_NOT_FOUND=13}
 : ${PROD_ID_NO_RECOMMENDATIONS=113}
 : ${PROD_ID_NO_REVIEWS=213}
 : ${SKIP_CB_TESTS=false}
-: ${USE_K8S=true}
+: ${USE_K8S=false}
 : ${NAMESPACE=show}
 
 function assertCurl() {
@@ -299,7 +300,11 @@ assertCurl 200 "curl -ksL https://$HOST:$PORT/openapi/swagger-ui.html"
 assertCurl 200 "curl -ks  https://$HOST:$PORT/openapi/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config"
 assertCurl 200 "curl -ks  https://$HOST:$PORT/openapi/v3/api-docs"
 assertEqual "3.0.1" "$(echo $RESPONSE | jq -r .openapi)"
-assertEqual "https://$HOST:$PORT" "$(echo $RESPONSE | jq -r '.servers[0].url')"
+# Skip this test since the server url is missing the port when deployed on Kubernetes
+if [[ $USE_K8S == "false" ]]
+then
+  assertEqual "https://$HOST:$PORT" "$(echo $RESPONSE | jq -r '.servers[0].url')"
+fi
 assertCurl 200 "curl -ks  https://$HOST:$PORT/openapi/v3/api-docs.yaml"
 
 if [[ $SKIP_CB_TESTS == "false" ]]

@@ -9,4 +9,3 @@ include ':mutual:util'
 
 include ':spring-cloud:gateway'
 include ':spring-cloud:authorization-server'
-include ':spring-cloud:config-server'

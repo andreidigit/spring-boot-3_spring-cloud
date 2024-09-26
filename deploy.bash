@@ -13,8 +13,6 @@
 
 : ${LOCAL_ROOT_CLOUD='spring-cloud'}
 : ${DIR_AUTH='/authorization-server'}
-: ${DIR_CONFIG='/config-server'}
-: ${DIR_EUREKA='/eureka-server'}
 : ${DIR_GATEWAY='/gateway'}
 
 : ${PATH_BUILD='/build'}
@@ -48,8 +46,6 @@ function createFolder() {
   mkdir -p "$ROOT_DIR/$LOCAL_ROOT_MICRO/$DIR_RECOMMENDATION/$PATH_LIB";
   mkdir -p "$ROOT_DIR/$LOCAL_ROOT_MICRO/$DIR_REVIEW/$PATH_LIB";
   mkdir -p "$ROOT_DIR/$LOCAL_ROOT_CLOUD/$DIR_AUTH/$PATH_LIB";
-  mkdir -p "$ROOT_DIR/$LOCAL_ROOT_CLOUD/$DIR_CONFIG/$PATH_LIB";
-  mkdir -p "$ROOT_DIR/$LOCAL_ROOT_CLOUD/$DIR_EUREKA/$PATH_LIB";
   mkdir -p "$ROOT_DIR/$LOCAL_ROOT_CLOUD/$DIR_GATEWAY/$PATH_LIB";
 
   echo "---- service directories have been created ------"
@@ -96,8 +92,6 @@ then
   copyJarDockerfile "$LOCAL_ROOT_MICRO" "$DIR_REVIEW"
 
   copyJarDockerfile "$LOCAL_ROOT_CLOUD" "$DIR_AUTH"
-  copyJarDockerfile "$LOCAL_ROOT_CLOUD" "$DIR_CONFIG"
-  copyJarDockerfile "$LOCAL_ROOT_CLOUD" "$DIR_EUREKA"
   copyJarDockerfile "$LOCAL_ROOT_CLOUD" "$DIR_GATEWAY"
 
 fi

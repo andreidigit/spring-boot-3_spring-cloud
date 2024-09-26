@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #### copy properties BASH
-: ${IS_CREATE_FOLDER=false}
+: ${IS_CREATE_FOLDER=true}
 : ${IS_COPY_BASIC=false}
 : ${IS_COPY_BASIC_HELM_SET=false}
 : ${IS_COPY_BASIC_HELM_GET=false}

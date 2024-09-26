@@ -1,4 +1,5 @@
 server.port: 7002
+spring.application.name: recommendation
 server.error.include-message: always
 
 management.endpoint.health.group.readiness.include: readinessState, rabbit, mongo

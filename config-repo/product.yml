@@ -1,4 +1,5 @@
 server.port: 7001
+spring.application.name: product
 server.error.include-message: always
 
 management.endpoint.health.group.readiness.include: readinessState, rabbit, mongo
@@ -11,7 +12,6 @@ spring.data.mongodb:
 spring.cloud.function.definition: messageProcessor
 
 spring.cloud.stream:
-  defaultBinder: rabbit
   default.contentType: application/json
   bindings.messageProcessor-in-0:
     destination: products

@@ -1,4 +1,5 @@
 server.port: 7003
+spring.application.name: review
 server.error.include-message: always
 
 management.endpoint.health.group.readiness.include: readinessState, rabbit, db

@@ -9,8 +9,6 @@ springdoc:
     oauth2-redirect-url: /swagger-ui/oauth2-redirect.html
     oauth:
       clientId: writer
-#      clientSecret: secret-writer
-      clientSecret: '{cipher}debb77857798ba70441b229de88624213b0a00b284f95fe31d1378d117cf3ffa'
       useBasicAuthenticationWithAccessCodeGrant: true
   oAuthFlow:
     authorizationUrl: https://localhost:8443/oauth2/authorize
@@ -94,6 +92,7 @@ api:
           This means that a delete request of a non-existing product will return **200 Ok**.
 
 server.port: 7000
+spring.application.name: product-composite
 server.error.include-message: always
 
 management.endpoint.health.group.readiness.include: readinessState, rabbit
