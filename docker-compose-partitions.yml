@@ -253,7 +253,7 @@ services:
       timeout: 2s
       retries: 60
 
-  zipkin-server:
+  jaeger-collector.istio-system:
     image: openzipkin/zipkin:3.4.0
     restart: always
     deploy:

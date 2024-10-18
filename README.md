@@ -84,6 +84,11 @@ Java 17.
 - Replacing Netflix Eureka discovery.
 - Development, staging, production.
 
-### 15.Replacing Config Server, Gateway
+### 15. Replacing Config Server, Gateway
 - ConfigMaps + Secrets.
 - Ingress, cert-manager [docs-link](https://cert-manager.io/docs/)
+
+### 16. Istio service mesh, Envoy proxy
+- Istio [install-link](https://istio.io/latest/docs/setup/install/)
+- Istio Integrations [link](https://istio.io/latest/docs/ops/integrations/)
+- Lyft Envoy [link](https://envoyproxy.io/)

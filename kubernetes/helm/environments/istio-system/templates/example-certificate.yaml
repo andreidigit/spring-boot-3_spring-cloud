@@ -1,0 +1,36 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: example-certificate
+spec:
+  commonName: show.me
+  subject:
+    countries:
+      - my-country
+    localities:
+      - my-locality
+    organizationalUnits:
+      - my-ou
+    organizations:
+      - my-org
+    postalCodes:
+      - my-pc
+    provinces:
+      - my-province
+    serialNumber: my-sn
+    streetAddresses:
+      - my-address
+  dnsNames:
+    - show.me
+    - health.show.me
+    - dashboard.show.me
+    - kiali.show.me
+    - tracing.show.me
+    - prometheus.show.me
+    - grafana.show.me
+    - kibana.show.me
+    - elasticsearch.show.me
+    - mail.show.me
+  issuerRef:
+    name: ca-issuer
+  secretName: example-certificate

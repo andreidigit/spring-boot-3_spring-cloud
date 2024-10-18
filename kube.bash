@@ -58,6 +58,15 @@ pscp -r -v -i ~/"$CRED_PPK_CERTIFICATE" \
 echo "---- 3.1. folder helm has set"
 fi
 
+#### SET ISTIO with HELM
+if [[ $IS_COPY_HELM_SET == "true" ]]
+then
+pscp -r -v -i ~/"$CRED_PPK_CERTIFICATE" \
+    "./$LOCAL_ROOT_KUBE/istio-tracing.yml" "./$LOCAL_ROOT_KUBE/show-namespace.yml" \
+    "$CRED_LOGIN_ADDRESS":"$ROOT_DIR"
+echo "---- 3.1. Istio files have set"
+fi
+
 #### GET HELM
 if [[ $IS_COPY_HELM_GET == "true" ]]
 then

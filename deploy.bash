@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #### deploy BASH
-: ${IS_CREATE_FOLDER=false}
-: ${IS_ONLY_CONFIG=true}
+: ${IS_CREATE_FOLDER=true}
+: ${IS_ONLY_CONFIG=false}
 
 #### Local Variables
 : ${LOCAL_ROOT_MICRO='microservices'}

@@ -180,5 +180,5 @@ spring.config.activate.on-profile: prod
 logging:
   level:
     root: WARN
-    se.magnus: WARN
+    com.example: WARN
     org.springframework.web.server.adapter.HttpWebHandlerAdapter: WARN

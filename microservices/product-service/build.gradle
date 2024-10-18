@@ -38,8 +38,8 @@ dependencies {
 
     implementation 'org.springframework.retry:spring-retry'
 
-    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
 
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}", "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     //annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0" может понадобится зависит от версий

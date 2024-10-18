@@ -40,8 +40,8 @@ dependencies {
 
     implementation 'org.springframework.retry:spring-retry'
 
-    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
 
     implementation "io.github.resilience4j:resilience4j-spring-boot3:${resilience4jVersion}"
     implementation "io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}"
